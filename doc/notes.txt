@@ -1,0 +1,40 @@
+1. Create account 
+
+2. Create container
+
+/enota/naziv
+
+3. Add some records
+{
+        "id": "1",
+        "enota": {
+            "id": 1,
+            "naziv": "Kranj"
+        },
+        "naziv": "Jesenice"
+}
+
+{
+        "enota": {
+            "id": 1,
+            "naziv": "Kranj"
+        },
+        "naziv": "Radovljica 1"
+}
+
+{
+        "id": "1",
+        "enota": {
+            "id": 3,
+            "naziv": "Ljubljana Center"
+        },
+        "naziv": "Ljubljana Šiška 1"
+}
+
+4. Query
+
+SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj'
+
+SELECT TOP 1 * FROM c WHERE c.naziv='Jesenice' 
+
+5. Api
