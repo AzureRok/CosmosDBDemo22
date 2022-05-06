@@ -101,7 +101,7 @@ namespace Volitve2022.CosmosDB
             for (var i = 0; i < count; i++)
             {
                 var iterator = this._container.GetItemQueryIterator<Okraj>(
-                    queryText: "SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj'",
+                    queryText: "SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj' AND c.id = '1'",
                     requestOptions: new QueryRequestOptions { PartitionKey = new PartitionKey("Kranj") }
                 );
                 var startedAt = DateTime.Now;
