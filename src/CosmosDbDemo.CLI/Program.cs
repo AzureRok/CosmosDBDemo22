@@ -71,3 +71,21 @@ static async Task<IEnumerable<Okraj>> ReadDataFromFile()
     await using Stream fileStream = File.OpenRead(fileName);
     return await JsonSerializer.DeserializeAsync<IEnumerable<Okraj>>(fileStream);
 }
+
+
+internal static class OssRaffle
+{
+    public static IEnumerable<string> GetResults()
+    {
+        return new [] {
+                "Uroš Mrak",
+                "Darko Lacen",
+                "Žiga Vajdič",
+                "Pavel Maslov",
+                "Biserka Cvetkovska",
+                "Matej"
+            }
+            //.OrderBy(_=>Guid.NewGuid())
+            .Select((x, i) => $"{i+1} - {x}");
+    }
+}
