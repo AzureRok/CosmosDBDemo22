@@ -85,7 +85,7 @@ internal static class OssRaffle
                 "Biserka Cvetkovska",
                 "Matej"
             }
-            //.OrderBy(_=>Guid.NewGuid())
+            .OrderBy(_=>Guid.NewGuid())
             .Select((x, i) => $"{i+1} - {x}");
     }
 }
