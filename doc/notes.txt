@@ -1,6 +1,8 @@
 1. Create account 
 
 2. Create container
+Database = Demo
+Container = volitve2022
 
 /enota/naziv
 
@@ -33,8 +35,8 @@
 
 4. Query
 
-SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj'
+SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj' AND c.id = '1'
 
-SELECT TOP 1 * FROM c WHERE c.naziv='Jesenice' 
+SELECT TOP 1 * FROM c WHERE c.naziv='Jesenice' AND c.id = '1'
 
 5. Api
