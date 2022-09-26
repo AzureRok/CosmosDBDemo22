@@ -37,6 +37,6 @@ Container = volitve2022
 
 SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj' AND c.id = '1'
 
-SELECT TOP 1 * FROM c WHERE c.naziv='Jesenice' AND c.id = '1'
+SELECT * FROM c WHERE c.naziv='Jesenice' AND c.id = '1'
 
 5. Api

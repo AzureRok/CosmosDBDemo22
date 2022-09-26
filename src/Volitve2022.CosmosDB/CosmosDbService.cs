@@ -33,7 +33,8 @@ namespace Volitve2022.CosmosDB
             CosmosClientOptions settings = new CosmosClientOptions()
             {
                 Serializer = cosmosSystemTextJsonSerializer,
-                ApplicationPreferredRegions = this._settings.PreferredRegions,
+                ApplicationRegion = this._settings?.PreferredRegions?.FirstOrDefault(),
+                //ApplicationPreferredRegions = this._settings.PreferredRegions,
                 AllowBulkExecution = true,
             };
 
@@ -164,8 +165,9 @@ namespace Volitve2022.CosmosDB
             {
                 var startedAt = DateTime.Now;
 
-                var result = await this._container.ReadItemAsync<Okraj>(
-                    "1", new PartitionKey("Kranj"));
+
+                var result = await this._container.GetItemQueryIterator<Okraj>("SELECT TOP 1 * FROM c WHERE c.enota.naziv = 'Kranj' AND c.id = '1'").ReadNextAsync();
+                var regions = result.Diagnostics.GetContactedRegions();
 
                 var elapsed = DateTime.Now.Subtract(startedAt).TotalMilliseconds;
                 var cost = result.RequestCharge;
@@ -174,7 +176,7 @@ namespace Volitve2022.CosmosDB
                 {
                     TimeElapsedInMs = elapsed,
                     CostRUs = cost,
-                    Text = $"Read {i + 1}. {result.Resource.DemoProperty}. {elapsed} ms; {cost} RUs"
+                    Text = $"Read {i + 1} from {string.Join(", ", regions)}. {elapsed} ms; {cost} RUs"
                 });
             }
             report.TotalTimeElapsedInMs = DateTime.Now.Subtract(totalStartedAt).TotalMilliseconds;
